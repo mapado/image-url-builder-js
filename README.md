@@ -1,4 +1,4 @@
-Mapado Ticketing JS
+Mapado Image JS Crop
 ==========
 
 ## Installation
