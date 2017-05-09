@@ -9,6 +9,6 @@ Mapado Image JS Crop
 ::js
 import CropManager from 'mapado-image-js-crop';
 
-const fullWidthImage = CropManager.cropImage(imagePath);
-const cropedImage = CropManager.cropImage(imagePath, 400, 300);
+const fullWidthImage = CropManager.imageCrop(imagePath);
+const cropedImage = CropManager.imageCrop(imagePath, 400, 300);
 ```
