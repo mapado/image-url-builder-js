@@ -1,5 +1,5 @@
 class CropManager {
-  imageCrop(imageParam, width = 0, height = 0) {
+  imageCrop(imageParam, width = 0, height = 0, options = {}) {
     let image = imageParam;
 
     if (!image) {
@@ -20,6 +20,16 @@ class CropManager {
       image += `_thumbs/${parseInt(width, 10)}`;
       if (height > 0) {
         image += `-${parseInt(height, 10)}`;
+      }
+
+      if (options) {
+        image += '.';
+
+        Object.entries(options).map((option) => {
+          image += `${option[0]}=${option[1]};`;
+        });
+
+        image = image.substring(0, image.length - 1);
       }
 
       if (extension) {
