@@ -2,11 +2,13 @@ Mapado Image JS Crop
 ==========
 
 ## Installation
-`npm install mapado-image-js-crop`
+
+```sh
+npm install mapado-image-js-crop
+```
 
 ## Usage 
-```
-::js
+```js
 import CropManager from 'mapado-image-js-crop';
 
 const fullWidthImage = CropManager.imageCrop(imagePath);
