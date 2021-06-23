@@ -1,6 +1,5 @@
-/* eslint-disable no-use-before-define, no-underscore-dangle */
 /**
- * @param imageParam {string}
+ * @param imageParam {null|string}
  * @param width {number}
  * @param height {number}
  * @param options {object}
@@ -21,6 +20,7 @@ export function imageCrop(imageParam, width = 0, height = 0, options = {}) {
   if (width > 0) {
     let extension = _getExt(image);
     if (extension.length > 4) {
+      // this is weird, as we added the host previously the extension will be something like `net/2016/5/9/toto`
       extension = null;
     }
 
