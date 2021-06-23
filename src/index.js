@@ -1,65 +1,84 @@
-class CropManager {
-  imageCrop(imageParam, width = 0, height = 0, options = {}) {
-    let image = imageParam;
+/* eslint-disable no-use-before-define, no-underscore-dangle */
+/**
+ * @param imageParam {string}
+ * @param width {number}
+ * @param height {number}
+ * @param options {object}
+ * @returns {string|null}
+ */
+export function imageCrop(imageParam, width = 0, height = 0, options = {}) {
+  let image = imageParam;
 
-    if (!image) {
-      return null;
-    }
-
-    if (!image.match(new RegExp('^//img([1-3])?.mapado.net/'))) {
-      const host = this._getHost(image);
-      image = host + image;
-    }
-
-    if (width > 0) {
-      let extension = this._getExt(image);
-      if (extension.length > 4) {
-        extension = null;
-      }
-
-      image += `_thumbs/${parseInt(width, 10)}`;
-      if (height > 0) {
-        image += `-${parseInt(height, 10)}`;
-      }
-
-      if (options) {
-        image += '.';
-
-        Object.entries(options).map((option) => {
-          image += `${option[0]}=${option[1]};`;
-        });
-
-        image = image.substring(0, image.length - 1);
-      }
-
-      if (extension) {
-        image += `.${extension}`;
-      }
-    }
-
-    return image;
+  if (!image) {
+    return null;
   }
 
-  _getHost(image) {
-    let shard = '';
-    const matches = (new RegExp('^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})')).exec(image);
-    if (matches) {
-      shard = parseInt(matches[1] % 2, 10);
-      shard = shard > 0 ? shard : ''; // remove "0"
-    }
-    return `//img${shard}.mapado.net/`;
+  if (!image.match(new RegExp('^//img([1-3])?.mapado.net/'))) {
+    const host = _getHost(image);
+    image = host + image;
   }
 
-  _getExt(path) {
-    const str = path;
-    const dotP = str.lastIndexOf('.') + 1;
-
-    if (dotP && dotP !== str.length) {
-      return str.substr(dotP);
+  if (width > 0) {
+    let extension = _getExt(image);
+    if (extension.length > 4) {
+      extension = null;
     }
 
-    return '';
+    image += `_thumbs/${parseInt(width, 10)}`;
+    if (height > 0) {
+      image += `-${parseInt(height, 10)}`;
+    }
+
+    if (options) {
+      image += '.';
+
+      Object.entries(options).map((option) => {
+        image += `${option[0]}=${option[1]};`;
+      });
+
+      image = image.substring(0, image.length - 1);
+    }
+
+    if (extension) {
+      image += `.${extension}`;
+    }
   }
+
+  return image;
 }
 
-export default new CropManager();
+/**
+ * @param image {string}
+ * @returns {string}
+ * @private
+ */
+function _getHost(image) {
+  let shard = '';
+  const matches = (new RegExp('^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})')).exec(image);
+  if (matches) {
+    shard = parseInt(matches[1] % 2, 10);
+    shard = shard > 0 ? shard : ''; // remove "0"
+  }
+  return `//img${shard}.mapado.net/`;
+}
+
+/**
+ * @param path {string}
+ * @returns {string}
+ * @private
+ */
+function _getExt(path) {
+  const str = path;
+  const dotP = str.lastIndexOf('.') + 1;
+
+  if (dotP && dotP !== str.length) {
+    return str.substr(dotP);
+  }
+
+  return '';
+}
+
+
+export default {
+  imageCrop,
+};

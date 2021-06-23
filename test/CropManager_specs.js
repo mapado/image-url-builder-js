@@ -1,6 +1,6 @@
 /* globals describe, it */
 import { expect } from 'chai';
-import CropManager from '../src/index';
+import CropManager, { imageCrop } from '../src/index';
 
 describe('CropManager tests', () => {
   it('handle basic url generation', () => {
@@ -29,3 +29,10 @@ describe('CropManager tests', () => {
       .to.be.equal('//img1.mapado.net/2016/5/9/toto.jpg_thumbs/400-300.blackwhite=1.jpg');
   });
 });
+
+describe('const import', () => {
+  it('const import', () => {
+    expect(imageCrop('2016/5/9/toto.jpg'))
+        .to.be.equal('//img1.mapado.net/2016/5/9/toto.jpg');
+  })
+})
