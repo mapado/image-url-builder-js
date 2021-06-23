@@ -6,7 +6,10 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "yarn lint:types && yarn lint:eslint",
+    "lint:types": "tsc --noEmit",
+    "lint:eslint": "eslint --quiet src/"
   },
   "files": [
     "dist"

@@ -32,5 +32,25 @@ module.exports = {
             'error',
             'always'
         ]
-    }
+    },
+    overrides: [
+      {
+        files: ['**/*.ts', '**/*.tsx'],
+      },
+      {
+        files: ['**/*.js', '**/*.jsx'],
+        rules: {
+          '@typescript-eslint/no-empty-function': 'off',
+          '@typescript-eslint/explicit-function-return-type': 'off',
+          '@typescript-eslint/explicit-module-boundary-types': 'off',
+        },
+      },
+      {
+        files: [
+          '*.test.js',
+          '*.test.ts',
+        ],
+        env: { jest: true },
+      },
+    ],
 };

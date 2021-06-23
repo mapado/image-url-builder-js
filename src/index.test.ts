@@ -1,4 +1,4 @@
-import CropManager, { imageCrop } from '../src';
+import CropManager, { imageCrop } from '.';
 
 describe('CropManager tests', () => {
   test('handle empty url', () => {
@@ -36,6 +36,6 @@ describe('CropManager tests', () => {
 describe('const import', () => {
   test('const import', () => {
     expect(imageCrop('2016/5/9/toto.jpg'))
-        .toBe('//img1.mapado.net/2016/5/9/toto.jpg');
-  })
-})
+      .toBe('//img1.mapado.net/2016/5/9/toto.jpg');
+  });
+});
