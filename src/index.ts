@@ -1,5 +1,9 @@
-
-export function imageCrop(imageParam: null|string, width = 0, height = 0, options = {}): string|null {
+export function buildUrl(
+  imageParam: null | string,
+  width = 0,
+  height = 0,
+  options = {}
+): string | null {
   let image = imageParam;
 
   if (!image) {
@@ -12,7 +16,7 @@ export function imageCrop(imageParam: null|string, width = 0, height = 0, option
   }
 
   if (width > 0) {
-    let extension: string|null = _getExt(image);
+    let extension: string | null = _getExt(image);
     if (extension.length > 4) {
       // this is weird, as we added the host previously the extension will be something like `net/2016/5/9/toto`
       extension = null;
@@ -46,7 +50,7 @@ export function imageCrop(imageParam: null|string, width = 0, height = 0, option
  */
 function _getHost(image: string): string {
   let shard = '';
-  const matches = (new RegExp('^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})')).exec(image);
+  const matches = new RegExp('^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})').exec(image);
   if (matches) {
     const firstMatch = parseInt(matches[1], 10) % 2;
     shard = firstMatch > 0 ? firstMatch.toString() : ''; // remove "0"
@@ -68,7 +72,6 @@ function _getExt(path: string): string {
   return '';
 }
 
-
 export default {
-  imageCrop,
+  buildUrl,
 };

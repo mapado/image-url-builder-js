@@ -1,7 +1,7 @@
 {
-  "name": "@mapado/image-js-crop",
+  "name": "@mapado/image-url-builder",
   "version": "1.1.0",
-  "description": "Cropping mapado image in JS",
+  "description": "Build mapado image in JS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,17 +9,18 @@
     "build": "tsc",
     "lint": "yarn lint:types && yarn lint:eslint",
     "lint:types": "tsc --noEmit",
-    "lint:eslint": "eslint --quiet src/"
+    "lint:eslint": "eslint --quiet src/",
+    "prepublishOnly": "yarn lint --quiet && yarn build"
   },
   "files": [
     "dist"
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:mapado/image-js-crop.git"
+    "url": "git@github.com:mapado/image-url-builder-js.git"
   },
   "author": "Julien Deniau",
-  "homepage": "https://github.com/mapado/image-js-crop",
+  "homepage": "https://github.com/mapado/image-url-builder-js",
   "publishConfig": {
     "registry": "http://npm.mapado.net:4873"
   },
