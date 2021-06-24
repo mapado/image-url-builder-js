@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-export default {
+module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -93,8 +93,8 @@ export default {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  // preset: 'ts-jest/presets/default-esm',
-  preset: 'ts-jest/presets/js-with-ts-esm',
+  preset: 'ts-jest/presets/default-esm',
+  // preset: 'ts-jest/presets/js-with-ts-esm',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -173,9 +173,9 @@ export default {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  transform:  {
-    "\\.(ts)$": "ts-jest"
-  },
+  // transform:  {
+  //   "\\.(ts)$": "ts-jest"
+  // },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
