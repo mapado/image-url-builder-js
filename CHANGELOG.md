@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.1
+
+Better typescript types
+
 ## 2.0.0
 
 - [BREAKING] Change package name from `mapado-image-js-crop` to `@mapado/image-url-builder` and Change the main method name from `cropImage` to `buildUrl`
