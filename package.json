@@ -10,7 +10,7 @@
     "lint": "yarn lint:types && yarn lint:eslint",
     "lint:types": "tsc --noEmit",
     "lint:eslint": "eslint --quiet src/",
-    "prepublishOnly": "yarn lint --quiet && yarn build"
+    "prepublishOnly": "yarn lint && yarn test && yarn build"
   },
   "files": [
     "dist"
