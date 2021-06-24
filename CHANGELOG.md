@@ -9,7 +9,7 @@ Better typescript types
 - [BREAKING] Change package name from `mapado-image-js-crop` to `@mapado/image-url-builder` and Change the main method name from `cropImage` to `buildUrl`
 
 ```diff
-- import CropManager from 'mapado-image-js-crop`;
+- import CropManager from 'mapado-image-js-crop';
 + import { buildUrl } from '@mapado/image-url-builder';
 
 - const url = CropManager.cropImage(src, width, height, options);
