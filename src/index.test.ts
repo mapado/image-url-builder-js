@@ -2,8 +2,8 @@ import UrlBuilder, { buildUrl } from '.';
 
 describe('UrlBuilder tests', () => {
   test('handle empty url', () => {
-    expect(buildUrl(null)).toBeNull();
-    expect(buildUrl('')).toBeNull();
+    expect(buildUrl(null)).toBeUndefined();
+    expect(buildUrl('')).toBeUndefined();
   });
 
   test('handle basic url generation', () => {

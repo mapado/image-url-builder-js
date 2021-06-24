@@ -1,14 +1,28 @@
 export function buildUrl(
-  imageParam: null | string,
+  imageParam: null | undefined | '',
+  width?: number,
+  height?: number,
+  options?: Record<string, unknown>
+): undefined;
+
+export function buildUrl(
+  imageParam: string,
+  width?: number,
+  height?: number,
+  options?: Record<string, unknown>
+): string;
+
+export function buildUrl(
+  imageParam: null | undefined | string,
   width = 0,
   height = 0,
   options = {}
-): string | null {
-  let image = imageParam;
-
-  if (!image) {
-    return null;
+): string | undefined {
+  if (!imageParam) {
+    return;
   }
+
+  let image: string = imageParam;
 
   if (!image.match(new RegExp('^//img([1-3])?.mapado.net/'))) {
     const host = _getHost(image);
