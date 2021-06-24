@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.2
+
+export as module
+
 ## 2.0.1
 
 Better typescript types
