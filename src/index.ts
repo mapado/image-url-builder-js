@@ -29,7 +29,7 @@ export function buildUrl(
     image = host + image;
   }
 
-  if (null !== width || null !== height) {
+  if (null !== width || null !== height || !!options) {
     let extension: string | null = _getExt(image);
     if (extension.length > 4) {
       // this is weird, as we added the host previously the extension will be something like `net/2016/5/9/toto`
@@ -38,11 +38,14 @@ export function buildUrl(
 
     image += `_thumbs/${width ?? 0}-${height ?? 0}`;
 
-    if (options) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    if (Object.entries(options).filter(([key, value]) => key !== 'allowwebp')) {
       image += '.';
 
       Object.entries(options).map((option) => {
-        image += `${option[0]}=${option[1]};`;
+        if (option[0] !== 'allowwebp') {
+          image += `${option[0]}=${option[1]};`;
+        }
       });
 
       image = image.substring(0, image.length - 1);
