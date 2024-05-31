@@ -1,21 +1,21 @@
 export function buildUrl(
   imageParam: null | undefined | '',
-  width?: number,
-  height?: number,
+  width?: number | null,
+  height?: number | null,
   options?: Record<string, unknown>
 ): undefined;
 
 export function buildUrl(
   imageParam: string,
-  width?: number,
-  height?: number,
+  width?: number | null,
+  height?: number | null,
   options?: Record<string, unknown>
 ): string;
 
 export function buildUrl(
   imageParam: null | undefined | string,
-  width = 0,
-  height = 0,
+  width: number | null = null,
+  height: number | null = null,
   options = {}
 ): string | undefined {
   if (!imageParam) {
@@ -25,27 +25,27 @@ export function buildUrl(
   let image: string = imageParam;
 
   if (!image.match(new RegExp('^//img([1-3])?.mapado.net/'))) {
-    const host = _getHost(image);
+    const host = '//img.mapado.net/';
     image = host + image;
   }
 
-  if (width > 0) {
+  if (null !== width || null !== height || !!options) {
     let extension: string | null = _getExt(image);
     if (extension.length > 4) {
       // this is weird, as we added the host previously the extension will be something like `net/2016/5/9/toto`
       extension = null;
     }
 
-    image += `_thumbs/${width}`;
-    if (height > 0) {
-      image += `-${height}`;
-    }
+    image += `_thumbs/${width ?? 0}-${height ?? 0}`;
 
-    if (options) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    if (Object.entries(options).filter(([key, value]) => key !== 'allowwebp')) {
       image += '.';
 
       Object.entries(options).map((option) => {
-        image += `${option[0]}=${option[1]};`;
+        if (option[0] !== 'allowwebp') {
+          image += `${option[0]}=${option[1]};`;
+        }
       });
 
       image = image.substring(0, image.length - 1);
@@ -57,19 +57,6 @@ export function buildUrl(
   }
 
   return image;
-}
-
-/**
- * @private
- */
-function _getHost(image: string): string {
-  let shard = '';
-  const matches = new RegExp('^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})').exec(image);
-  if (matches) {
-    const firstMatch = parseInt(matches[1], 10) % 2;
-    shard = firstMatch > 0 ? firstMatch.toString() : ''; // remove "0"
-  }
-  return `//img${shard}.mapado.net/`;
 }
 
 /**
