@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.1.0
+
+- Remove use of img/img1 as we are now multiplexing with http2
+- Add option allowwebp to enable webp optimization even for not resized images
+- Allow =0 width, with >= height to resize based on set height
+
 ## 2.0.2
 
 export as module
