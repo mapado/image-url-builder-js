@@ -53,6 +53,21 @@ describe('UrlBuilder tests', () => {
       '//img.mapado.net/2016/5/9/toto.jpg_thumbs/400-300.blackwhite=1.jpg'
     );
   });
+
+  test('allowwepb option', () => {
+    expect(UrlBuilder.buildUrl('2016/5/9/toto.jpg')).toBe(
+      '//img.mapado.net/2016/5/9/toto.jpg'
+    );
+    expect(UrlBuilder.buildUrl('2016/5/9/toto.jpg', null, null)).toBe(
+      '//img.mapado.net/2016/5/9/toto.jpg'
+    );
+    expect(UrlBuilder.buildUrl('2016/5/9/toto.jpg', 0, 0)).toBe(
+      '//img.mapado.net/2016/5/9/toto.jpg_thumbs/0-0.jpg'
+    );
+    expect(UrlBuilder.buildUrl('2016/5/9/toto.jpg', null, null, { allowwebp: true })).toBe(
+      '//img.mapado.net/2016/5/9/toto.jpg_thumbs/0-0.jpg'
+    );
+  });
 });
 
 describe('const import', () => {
