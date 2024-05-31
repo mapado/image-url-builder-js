@@ -29,7 +29,7 @@ export function buildUrl(
     image = host + image;
   }
 
-  if (null !== width || null !== height || !!options) {
+  if (null !== width || null !== height || Object.keys(options).length) {
     let extension: string | null = _getExt(image);
     if (extension.length > 4) {
       // this is weird, as we added the host previously the extension will be something like `net/2016/5/9/toto`
