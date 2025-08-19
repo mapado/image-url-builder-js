@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.2.0
+
+- add types in "exports" key in package.json file
+
 ## 2.1.0
 
 - Remove use of img/img1 as we are now multiplexing with http2
