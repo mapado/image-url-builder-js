@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.2.1
+
+Fix typing issue for buildUrl
+
 ## 2.2.0
 
 - add types in "exports" key in package.json file
