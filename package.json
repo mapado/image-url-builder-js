@@ -1,7 +1,7 @@
 {
   "name": "@mapado/image-url-builder",
   "private": false,
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Build mapado image in JS",
   "type": "module",
   "main": "dist/index.js",
