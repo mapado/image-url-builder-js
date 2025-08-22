@@ -69,6 +69,7 @@
 
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
-    "resolveJsonModule": true                 /* Allow import of JSON. Might potentially consume a lot of memory https://github.com/Microsoft/TypeScript/pull/22167#issuecomment-385479553 */
+    "resolveJsonModule": true,                /* Allow import of JSON. Might potentially consume a lot of memory https://github.com/Microsoft/TypeScript/pull/22167#issuecomment-385479553 */
+    "skipLibCheck": true,
   }
 }
