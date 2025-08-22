@@ -4,7 +4,7 @@
 
 Fix typing issue for buildUrl
 
-## 2.2.0
+## 2.2.0 - [BROKEN BUILD]
 
 - add types in "exports" key in package.json file
 
