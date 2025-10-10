@@ -16,7 +16,8 @@
     "build": "tsc",
     "lint": "yarn lint:types && yarn lint:eslint",
     "lint:types": "tsc --noEmit",
-    "lint:eslint": "eslint --quiet src/"
+    "lint:eslint": "eslint --quiet src/",
+    "prepublishOnly": "test -n \"$ALLOW_PUBLISH\" || { echo \"❌ Publication directe interdite. Utilisez: make publish\"; exit 1; }"
   },
   "files": [
     "dist"
